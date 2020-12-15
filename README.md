@@ -1,5 +1,5 @@
 # tst-ro
 
-Basic Chrome TST with Romanian language
+Basic Chrome Text-To-Speech test in Romanian language:
 
-Please visit https://optimistic-haibt-a763ed.netlify.app/
+https://optimistic-haibt-a763ed.netlify.app/
