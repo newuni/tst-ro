@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<meta name="robots" content="noindex">
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Romanian Text to Speech Test</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="font-sans">
+
+<div class="p-6">
+
+    <label class="block">
+        <span class="text-gray-1400 font-extrabold">Text to speech</span>
+        <textarea placeholder="Enter some text" type="text" id="texto" rows="10" cols="50"
+                  class="form-textarea mt-1 block w-full"></textarea>
+    </label>
+
+    <br>
+
+    <a href="#" id="play"
+       class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-70 border-gray-300">PLAY</a>
+
+</div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#play").on("click", function () {
+
+            if ('speechSynthesis' in window) {
+
+                var texto = "Vă rugăm să completați în caseta de text cu mesajul pe care doriți să îl citiți.";
+                if ($("#texto").val()) {
+                    texto = $("#texto").val();
+                }
+                var lang = "ro-RO";
+
+                var msg = new SpeechSynthesisUtterance();
+
+                msg.voiceURI = "native";
+                msg.volume = 1;
+                msg.rate = 0.95;
+                msg.pitch = 1;
+                msg.text = texto;
+
+                msg.lang = lang;
+
+                console.log(msg);
+
+                speechSynthesis.speak(msg);
+
+            } else {
+
+                console.log("no speechSynthesis");
+
+            }
+
+        });
+
+    });
+
+</script>
+
+</html>
